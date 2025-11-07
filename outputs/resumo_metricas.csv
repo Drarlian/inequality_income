@@ -1,0 +1,6 @@
+Métrica,Valor
+Correlação (Pearson) escolaridade x renda,0.9994
+Correlação (Spearman) escolaridade x renda,1.0
+Gini (empírico) sobre renda_media,0.25
+Gini (simulado) com população sintética,0.3567
+Registros usados (após limpeza),3.0

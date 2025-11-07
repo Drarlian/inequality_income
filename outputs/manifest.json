@@ -1,0 +1,10 @@
+{
+  "arquivos": {
+    "scatter_escolaridade_renda_png": "outputs\\scatter_escolaridade_renda.png",
+    "scatter_renda_por_regiao_png": "outputs\\scatter_renda_por_regiao.png",
+    "heatmap_png": "outputs\\heatmap_renda_regiao.png",
+    "pivot_csv": "outputs\\pivot_renda_regiao_escolaridade.csv",
+    "resumo_csv": "outputs\\resumo_metricas.csv",
+    "gini_json": "outputs\\gini_resultados.json"
+  }
+}
