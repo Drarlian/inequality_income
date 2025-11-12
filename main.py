@@ -7,9 +7,6 @@ from pandas.api.types import CategoricalDtype
 from pathlib import Path
 
 
-# -----------------------
-# Utilidades
-# -----------------------
 def to_numeric_brl(s: pd.Series) -> pd.Series:
     """
     Converte strings numéricas com possíveis separadores BR (milhar . e decimal ,) para float.
@@ -63,9 +60,6 @@ def simulate_population_from_means(means: np.ndarray, cv: float = 0.5, samples_p
     return np.concatenate(simulated)
 
 
-# -----------------------
-# Pipeline principal
-# -----------------------
 def read_file(csv_path: str = "renda_educacao.csv") -> pd.DataFrame:
     """
     Le e limpa os dados do csv.
@@ -274,7 +268,7 @@ def main(csv_path: str | Path = "renda_educacao.csv", output_dir: str | Path = "
 
     df = read_file(csv_path)
 
-    # Codificação ordinal de escolaridade (para correlação numérica)
+    # Codificação ordinal de escolaridade (para correlação numérica):
     education_order = [
         "Sem instrução",
         "Fundamental",
@@ -289,7 +283,7 @@ def main(csv_path: str | Path = "renda_educacao.csv", output_dir: str | Path = "
     df["escolaridade_cat"] = df["escolaridade"].astype(cat_type)
     df["escolaridade_code"] = df["escolaridade_cat"].cat.codes
 
-    # Filtra apenas as linhas com escolaridade dentro da ordem definida (codes >= 0)
+    # Filtra apenas as linhas com escolaridade dentro da ordem definida (codes >= 0):
     df_corr = df.loc[df["escolaridade_code"] >= 0].copy()
 
     scatter_path = create_dispersao_escolaridade_renda(df_corr, output_dir)
@@ -302,7 +296,7 @@ def main(csv_path: str | Path = "renda_educacao.csv", output_dir: str | Path = "
 
     pivot_csv, resumo_csv = create_resume(df, df_corr, gini_empirico, gini_simulado, pivot, output_dir)
 
-    # Manifesto com caminhos de saída
+    # Arquivo com caminhos de saída:
     manifest = {
         "arquivos": {
             "scatter_escolaridade_renda_png": str(scatter_path),
